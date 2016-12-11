@@ -15,7 +15,5 @@ module.exports = {
           console.log("The file was saved!");
       });
     });
-  };
-
-
-// module.exports.loadFromCSVFile('./data/filename', 'tmpfilename');
+}
+}

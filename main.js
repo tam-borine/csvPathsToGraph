@@ -40,23 +40,21 @@ module.exports = {
     });
   },
 
-  buildUserPaths: function (dataGroupedByUser){ //BROKEN CURRENTLY
+  buildUserPaths: function (data){ //BROKEN CURRENTLY
     userPaths = {} //{userid9: [[A, 7],[B, 9],[D, 5], [F, 7]], userid10: [[A, 6],[C, 7]]}
-    dataGroupedByUser.forEach(function(user){
-      for (item in user){  //we need to iterate less now as have taken away unecesssary abstraction layer when grouping
+      for (item in data){
         userPaths[item] = []
-        for (subitem in user[item]) {
+        for (key in data[item]) {
+          console.log(data[item][key]);
           //score is proxy for edge weight and ex_id is proxy for node
-          score = user[item][subitem]["attempts_before_completion"]/user[item][subitem]["attempts"] //numbers are weird
-          ex_id = user[item][subitem]["exercise_id"]
+          score = data[item][key]["attempts_before_completion"]/data[item][key]["attempts"] //numbers are weird
+          ex_id = data[item][key]["exercise_id"]
           userPaths[item].push([ex_id, score])
         }
       }
-
-    })
     return userPaths
   }
 
 } //end of module.export
 
-module.exports.runAll(data)
+// console.log(module.exports.runAll(data));

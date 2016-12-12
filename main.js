@@ -53,6 +53,26 @@ module.exports = {
         }
       }
     return userPaths
+  },
+
+  createGraph: function(dataObject){
+    var graph = {}
+    //input: {userid9: [[A, 7],[B, 9],[D, 5], [F, 7]], userid10: [[A, 6],[C, 7]]}
+    for(key in dataObject){
+      for (subarray in dataObject[key])
+        node = subarray[0];
+        weight = subarray[1];
+        if(!graph[node]) {
+             graph[node] = {};
+         }
+    }
+
+    //for (var i=0; i<a.length; i++) {
+    // i // is the index
+    // a[i] // is the item
+}
+    //// GOAL IS A GRAPH SUCH AS {"A":{"B":[9], "F":[3]}, "B":{"D": [5]}, "D": {"F":[7,6]}}
+
   }
 
 } //end of module.export
